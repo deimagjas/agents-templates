@@ -1,8 +1,6 @@
-#from google.adk.agents.llm_agent import Agent
 from google.adk.agents import LlmAgent
 from google.adk.models.lite_llm import LiteLlm
 
-# Mock tool implementation
 def get_current_time(city: str) -> dict:
     """Returns the current time in a specified city."""
     return {"status": "success", "city": city, "time": "10:30 AM"}
