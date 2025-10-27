@@ -32,10 +32,24 @@ Nota: Mantén `AWS_BEARER_TOKEN_BEDROCK` seguro y no lo comprometas en repositor
 Para iniciar el agente usa el siguiente comando desde la raíz del proyecto:
 
 ```zsh
+# En desarrollo (usar ADK)
 adk run a2t
+
+# También puedes ejecutar cualquier agente por su nombre:
+adk run <nombre_del_agente>
+
+# Lanzar la interfaz web de desarrollo (si está disponible)
+adk web
 ```
 
-Este comando iniciará el agente `a2t` usando la configuración y el código dentro del paquete `a2t`.
+Para ejecutar el agente fuera del ADK (por ejemplo en un entorno de producción o para pruebas fuera del flujo de desarrollo) puedes ejecutar directamente el script del ejemplo. Por ejemplo:
+
+```zsh
+# Ejecutar el agente de ejemplo con 'uv'
+uv run python  adk_example/agent.py
+```
+
+Este conjunto de comandos permite lanzar el agente en modo desarrollo usando las herramientas del ADK (`adk run`, `adk web`) o ejecutar el ejemplo directamente cuando se desea correrlo sin el ADK.
 
 ## Ejemplo de flujo rápido
 
