@@ -1,10 +1,10 @@
-# Agent: a2t
+# Agent: adk_example
 
-Documentación para el agente `a2t` incluido en este repositorio.
+Documentación para el agente `adk_example` incluido en este repositorio.
 
 ## Descripción
 
-El agente `a2t` es una plantilla ligera para ejecutar un agente que interactúa con servicios en la nube. Este README describe cómo lanzar el agente y las variables de entorno obligatorias para su correcto funcionamiento.
+El agente `adk_example` es una plantilla ligera para ejecutar un agente que interactúa con servicios en la nube. Este README describe cómo lanzar el agente y las variables de entorno obligatorias para su correcto funcionamiento y evaluación.
 
 ## Requisitos
 
@@ -25,15 +25,13 @@ export AWS_REGION_NAME=us-east-1
 export AWS_BEARER_TOKEN_BEDROCK="<tu_bearer_token_aqui>"
 ```
 
-Nota: Mantén `AWS_BEARER_TOKEN_BEDROCK` seguro y no lo comprometas en repositorios públicos.
-
 ## Cómo lanzar el agente
 
 Para iniciar el agente usa el siguiente comando desde la raíz del proyecto:
 
 ```zsh
 # En desarrollo (usar ADK)
-adk run a2t
+adk run adk_example
 
 # También puedes ejecutar cualquier agente por su nombre:
 adk run <nombre_del_agente>
@@ -42,26 +40,24 @@ adk run <nombre_del_agente>
 adk web
 ```
 
-Para ejecutar el agente fuera del ADK (por ejemplo en un entorno de producción o para pruebas fuera del flujo de desarrollo) puedes ejecutar directamente el script del ejemplo. Por ejemplo:
+Para ejecutar el agente fuera del ADK (por ejemplo en un entorno de producción o para pruebas fuera del flujo de desarrollo) puedes ejecutar directamente el script del ejemplo así:
 
 ```zsh
-# Ejecutar el agente de ejemplo con 'uv'
-uv run python  adk_example/agent.py
+uv run python adk_example/runner.py
 ```
 
 Este conjunto de comandos permite lanzar el agente en modo desarrollo usando las herramientas del ADK (`adk run`, `adk web`) o ejecutar el ejemplo directamente cuando se desea correrlo sin el ADK.
 
-## Ejemplo de flujo rápido
+## Evaluación del agente
 
-1. Configura las variables de entorno (ver sección anterior).
-2. Ejecuta `adk run a2t`.
-3. Observa los logs en la terminal y prueba las funcionalidades expuestas por el agente según cómo esté implementado en `a2t/agent.py`.
+Para ejecutar las pruebas y evaluar el agente, usa:
 
-## Buenas prácticas y notas
+```zsh
+uv run pytest -v eval
+```
 
-- No incluyas tokens ni credenciales en el código ni en commits.
-- Usa un gestor de secretos o variables de entorno en entornos de producción (AWS Secrets Manager, Vault, etc.).
-- Si necesitas cambiar la configuración (por ejemplo, otro servicio o parámetros), revisa y modifica `a2t/agent.py`.
+Esto ejecuta los tests definidos en el directorio `eval` usando `pytest` a través de `uv`.
+
 
 ## Contacto y contribuciones
 
